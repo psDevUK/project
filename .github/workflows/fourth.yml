@@ -1,0 +1,23 @@
+name: Shh
+on:
+  push:
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  run-a-ps:
+    runs-on: ubuntu-latest
+    env:
+      MYPW: ${{secrets.MYTOKEN}}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check it
+        run: |
+          $securestring = ConvertTo-SecureString $env:MYPW -AsPlainText -Force
+          $cred = New-Object PSCredential -ArgumentList "Test", $securestring
+          $cred
+          $cred.UserName
+          $cred.Password
+          $cred.GetNetworkCredential().Password
