@@ -1,0 +1,29 @@
+name: Do some PS
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  run-a-ps:
+    runs-on: ubuntu-latest
+    env:
+      WHOA: COOL
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check it
+        run: |
+          . ./test.ps1
+          Get-ChildItem -Recurse -Path ./ | Select-Object FullName
+          $testvar = "Hello"
+          $testvar
+
+      - name: Let us see
+        run: |
+          $env:WHOA
+          Write-Warning "$testvar is testvar"
