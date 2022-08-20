@@ -9,7 +9,7 @@ jobs:
   run-a-ps:
     runs-on: ubuntu-latest
     env:
-      MYPW: ${{secrets.MYTOKEN}}
+      $env:MYPW: ${{secrets.MYTOKEN}}
 
     steps:
       - uses: actions/checkout@v3
