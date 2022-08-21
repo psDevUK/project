@@ -1,10 +1,10 @@
 name: publish-module-kbupdate-only                      ### This is the name of the action
 on:                                                     ### Specifies what github action like push/pull should make this code run
-  workflow_dispatch:                                    
-defaults:
-  run:
-    working-directory: C:\kbupdate
-    shell: pwsh
+  workflow_dispatch:                                    ### Creating the workflow dispatch event
+defaults:                                               ### default values to be used
+  run:                                                  ### Will run a single command as no pipe specified on run
+    working-directory: C:\kbupdate                     ### Setting the location
+    shell: pwsh                                        ### using pwsh as the shell
 
 jobs:                                                   ### This will group together all jobs that are running under the name publish-module-kbupdate-only
   publish:                                                    ### Making a job named publish
