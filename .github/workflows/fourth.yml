@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check it
         run: |
-          $securestring = ConvertTo-SecureString $env:MYPW -AsPlainText -Force
+          $securestring = ConvertTo-SecureString $Env:MYPW -AsPlainText -Force
           $cred = New-Object PSCredential -ArgumentList "Test", $securestring
           $cred
           $cred.UserName
